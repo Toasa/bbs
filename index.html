@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>掲示板</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+        <script src="board.js"></script>
+        <link rel="stylesheet" type="text/css" href="board.css">
+    </head>
+
+    <body>
+        <h1>掲示板</h1>
+        <div id="board">
+            <form method="">
+                <input type="text" v-model="name" placeholder="name"><br>
+                <textarea type="text" v-model="comment" rows="10" cols="60" placeholder="comment"></textarea><br>
+                <!-- 投稿ボタンが押されたとき、postComment(js内の関数)の呼出 -->
+                <button id="add" type="submit" v-on:click="postComment">post</button>
+            </form>
+
+
+            <!-- getJsonByAjax()の不成功の際, エラーメッセージ表示 -->
+            <p id="error1"></p>
+            <!-- 上から, mysql書込結果, mysql書込詳細結果(成功時は表示されない) -->
+            <p id="msg1"></p>
+            <p id="msg2"></p>
+
+            <br>
+            <h2>コメント</h2>
+            <p v-for="value in resp">
+                --------------------------------------------------------------- <br>
+                {{ value.id }}  {{ value.name }}  {{ value.date }}<br>
+                {{ value.comment }}
+                <br>
+            </p>
+        </div>
+        <br>
+
+
+    </body>
+</html>

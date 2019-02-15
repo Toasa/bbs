@@ -1,0 +1,9 @@
+h1, h2 {
+    background-color: #4169e1;
+    padding: 6px;
+    color: #fff;
+}
+
+textarea {
+    size: 404px;
+}
